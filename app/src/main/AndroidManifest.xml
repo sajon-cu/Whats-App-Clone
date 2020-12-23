@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatsAppClone">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.account.LoginActivity"></activity>
+        <activity android:name=".ui.MailActivity" />
+        <activity android:name=".ui.account.RegisterActivity" />
+        <activity android:name=".ui.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
