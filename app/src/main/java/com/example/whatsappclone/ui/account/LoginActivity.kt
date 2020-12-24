@@ -1,14 +1,13 @@
 package com.example.whatsappclone.ui.account
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.whatsappclone.R
 import com.example.whatsappclone.databinding.ActivityLoginBinding
 import com.example.whatsappclone.framework.BaseActivity
-import com.example.whatsappclone.ui.MailActivity
+import com.example.whatsappclone.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 
@@ -73,7 +72,7 @@ class LoginActivity : BaseActivity() {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if(task.isSuccessful) {
                 progress(false)
-                val intent = Intent(this, MailActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()

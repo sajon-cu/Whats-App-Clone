@@ -17,7 +17,9 @@
             android:background="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:popupTheme="@style/MenuStyle">
 
         </androidx.appcompat.widget.Toolbar>
 

@@ -9,15 +9,17 @@ import com.example.whatsappclone.databinding.ActivityMainBinding
 import com.example.whatsappclone.databinding.ActivityStartBinding
 import com.example.whatsappclone.ui.account.LoginActivity
 import com.example.whatsappclone.ui.account.RegisterActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class StartActivity : AppCompatActivity() {
     lateinit var bind: ActivityStartBinding
+    private var firebaseUser: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
         bind = DataBindingUtil.setContentView(this, R.layout.activity_start)
-
         // init listener
         initListener()
     }
@@ -31,6 +33,18 @@ class StartActivity : AppCompatActivity() {
         bind.btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+
+        if(firebaseUser != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
