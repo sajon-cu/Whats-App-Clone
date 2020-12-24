@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.whatsappclone.R
-import com.example.whatsappclone.databinding.ActivityMainBinding
 import com.example.whatsappclone.databinding.ActivityStartBinding
 import com.example.whatsappclone.ui.account.LoginActivity
 import com.example.whatsappclone.ui.account.RegisterActivity
+import com.example.whatsappclone.ui.home.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 

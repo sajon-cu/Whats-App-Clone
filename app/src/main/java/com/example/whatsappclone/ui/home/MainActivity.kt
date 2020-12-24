@@ -1,4 +1,4 @@
-package com.example.whatsappclone.ui
+package com.example.whatsappclone.ui.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,17 +8,20 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.whatsappclone.R
+import com.example.whatsappclone.adapter.PagerAdapter
 import com.example.whatsappclone.databinding.ActivityMainBinding
 import com.example.whatsappclone.model.user.User
+import com.example.whatsappclone.ui.StartActivity
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import java.sql.DatabaseMetaData
 
 class MainActivity : AppCompatActivity() {
     lateinit var bind: ActivityMainBinding
     lateinit var firebaseUser: FirebaseUser
     lateinit var reference: DatabaseReference
+    lateinit var adapter: PagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         // init toolbar
         initToolbar()
+
+        // initPager
+        initPager()
 
         // init firebase auth
         initAuth()
@@ -40,6 +46,24 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.apply {
             title = ""
         }
+    }
+
+    private fun initPager() {
+        if(::adapter.isInitialized) return
+        adapter = PagerAdapter(this)
+
+        bind.pager.adapter = adapter
+
+        TabLayoutMediator(
+            bind.tabs,
+            bind.pager,
+            { tab, position ->
+                when(position) {
+                    0 -> tab.text = "Chats"
+                    1 -> tab.text = "Users"
+                }
+            }
+        ).attach()
     }
 
     private fun initAuth() {

@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.whatsappclone.R
 import com.example.whatsappclone.databinding.ActivityLoginBinding
 import com.example.whatsappclone.framework.BaseActivity
-import com.example.whatsappclone.ui.MainActivity
+import com.example.whatsappclone.ui.home.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 
